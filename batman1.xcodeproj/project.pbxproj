@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D0EC50D1D3D368F00079C46 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D0EC50C1D3D368F00079C46 /* SDL2_image.framework */; };
 		9DC82B121D3B6A510062FFCF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC82B111D3B6A510062FFCF /* main.cpp */; };
 		9DC82B191D3B6A650062FFCF /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC82B181D3B6A650062FFCF /* SDL2.framework */; };
 /* End PBXBuildFile section */
@@ -24,9 +25,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9D0EC50C1D3D368F00079C46 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 		9DC82B0E1D3B6A510062FFCF /* batman1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = batman1; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC82B111D3B6A510062FFCF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9DC82B181D3B6A650062FFCF /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		9DC82B1C1D3B71C10062FFCF /* credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = credits; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0EC50D1D3D368F00079C46 /* SDL2_image.framework in Frameworks */,
 				9DC82B191D3B6A650062FFCF /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,6 +48,7 @@
 		9DC82B051D3B6A510062FFCF = {
 			isa = PBXGroup;
 			children = (
+				9D0EC50C1D3D368F00079C46 /* SDL2_image.framework */,
 				9DC82B181D3B6A650062FFCF /* SDL2.framework */,
 				9DC82B101D3B6A510062FFCF /* batman1 */,
 				9DC82B0F1D3B6A510062FFCF /* Products */,
@@ -62,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				9DC82B111D3B6A510062FFCF /* main.cpp */,
+				9DC82B1C1D3B71C10062FFCF /* credits */,
 			);
 			path = batman1;
 			sourceTree = "<group>";
@@ -249,6 +255,7 @@
 				9DC82B171D3B6A510062FFCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
