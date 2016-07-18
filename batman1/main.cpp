@@ -107,6 +107,7 @@ void init(){
 }
 
 void loadMedia(){
+    // only loading sprite 2 to 8
     for (int i = 0; i < RUNNING_ANIMATION_FRAMES; i++) {
         gRunningSpriteTextures[i].loadFromFile("media/sprites/batman-running-" + std::to_string(i+2) + ".png");
     }
