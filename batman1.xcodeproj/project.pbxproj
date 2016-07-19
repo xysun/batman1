@@ -32,7 +32,6 @@
 		9DC82B0E1D3B6A510062FFCF /* batman1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = batman1; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC82B111D3B6A510062FFCF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9DC82B181D3B6A650062FFCF /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
-		9DC82B1C1D3B71C10062FFCF /* credits */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = credits; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				9DC82B111D3B6A510062FFCF /* main.cpp */,
-				9DC82B1C1D3B71C10062FFCF /* credits */,
 				9D0EC50E1D3E4B4700079C46 /* LTexture.cpp */,
 				9D0EC50F1D3E4B4700079C46 /* LTexture.hpp */,
 			);
