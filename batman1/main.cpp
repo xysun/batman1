@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <stdio.h>
+#include "LTexture.hpp"
 
 void init();
 void loadMedia();
@@ -20,73 +21,6 @@ const int FRAME_CONTROLLER = 8;
 
 SDL_Renderer* gRenderer = NULL;
 SDL_Window* gWindow = NULL;
-
-class LTexture{
-public:
-    LTexture();
-    ~LTexture();
-    
-    void loadFromFile(std::string path);
-    
-    void free();
-    
-    void render(int x, int y);
-    
-    int getWidth() {return mWidth;};
-    int getHeight() {return mHeight;};
-    
-private:
-    SDL_Texture* mTexture;
-    
-    int mWidth;
-    int mHeight;
-    
-};
-
-LTexture::LTexture(){
-    mTexture = NULL;
-    mWidth = 0;
-    mHeight = 0;
-}
-
-LTexture::~LTexture(){
-    free();
-}
-
-void LTexture::free(){
-    if (mTexture != NULL) {
-        SDL_DestroyTexture(mTexture);
-        mHeight = 0;
-        mWidth = 0;
-    }
-}
-
-void LTexture::loadFromFile(std::string path){
-    
-    printf("loading image from: %s\n", path.c_str());
-    
-    free();
-    
-    SDL_Texture* newTexture = NULL;
-    
-    SDL_Surface* loadedSurface = IMG_Load(path.c_str());
-    
-    newTexture = SDL_CreateTextureFromSurface(gRenderer, loadedSurface);
-    
-    mWidth = loadedSurface->w;
-    mHeight = loadedSurface->h;
-    
-    SDL_FreeSurface(loadedSurface);
-    
-    mTexture = newTexture;
-    
-}
-
-void LTexture::render(int x, int y){
-    SDL_Rect renderQuad = {x,y,mWidth,mHeight};
-    
-    SDL_RenderCopy(gRenderer, mTexture, NULL, &renderQuad);
-}
 
 const int RUNNING_ANIMATION_FRAMES = 7;
 LTexture gRunningSpriteTextures[RUNNING_ANIMATION_FRAMES];
@@ -111,11 +45,11 @@ void init(){
 void loadMedia(){
     // only loading sprite 2 to 8
     for (int i = 0; i < RUNNING_ANIMATION_FRAMES; i++) {
-        gRunningSpriteTextures[i].loadFromFile("media/sprites/batman-running-" + std::to_string(i+2) + ".png");
+        gRunningSpriteTextures[i].loadFromFile("media/sprites/batman-running-" + std::to_string(i+2) + ".png", gRenderer);
     }
     
     // load background
-    gBackGroundTexture.loadFromFile("media/gotham.jpg");
+    gBackGroundTexture.loadFromFile("media/gotham.jpg", gRenderer);
 }
 
 void close(){
@@ -160,10 +94,10 @@ int main(int argc, const char * argv[]) {
         if (scrollingOffset < -gBackGroundTexture.getWidth()) {
             scrollingOffset = 0;
         }
-        gBackGroundTexture.render(scrollingOffset, 0);
-        gBackGroundTexture.render(scrollingOffset + gBackGroundTexture.getWidth(), 0);
+        gBackGroundTexture.render(scrollingOffset, 0, gRenderer);
+        gBackGroundTexture.render(scrollingOffset + gBackGroundTexture.getWidth(), 0, gRenderer);
         
-        gRunningSpriteTextures[frame / FRAME_CONTROLLER].render(50, SCREEN_HEIGHT - 60); // TODO
+        gRunningSpriteTextures[frame / FRAME_CONTROLLER].render(50, SCREEN_HEIGHT - 60, gRenderer); // TODO
         
         SDL_RenderPresent(gRenderer);
         
