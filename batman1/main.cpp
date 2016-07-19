@@ -143,6 +143,8 @@ int main(int argc, const char * argv[]) {
     
     int frame = 0;
     
+    int scrollingOffset = 0;
+    
     while (!quit) {
         while (SDL_PollEvent(&e) != 0) {
             if (e.type == SDL_QUIT) {
@@ -153,8 +155,13 @@ int main(int argc, const char * argv[]) {
         SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
         SDL_RenderClear(gRenderer);
         
-        // load background first
-        gBackGroundTexture.render(0, 0);
+        // load background first with offset
+        -- scrollingOffset;
+        if (scrollingOffset < -gBackGroundTexture.getWidth()) {
+            scrollingOffset = 0;
+        }
+        gBackGroundTexture.render(scrollingOffset, 0);
+        gBackGroundTexture.render(scrollingOffset + gBackGroundTexture.getWidth(), 0);
         
         gRunningSpriteTextures[frame / FRAME_CONTROLLER].render(50, SCREEN_HEIGHT - 60); // TODO
         
