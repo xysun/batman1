@@ -14,7 +14,7 @@ void init();
 void loadMedia();
 void close();
 
-const int SCREEN_WIDTH = 640;
+const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 480;
 const int FRAME_CONTROLLER = 8;
 
@@ -91,6 +91,8 @@ void LTexture::render(int x, int y){
 const int RUNNING_ANIMATION_FRAMES = 7;
 LTexture gRunningSpriteTextures[RUNNING_ANIMATION_FRAMES];
 
+LTexture gBackGroundTexture;
+
 
 void init(){
     SDL_Init(SDL_INIT_VIDEO);
@@ -111,12 +113,16 @@ void loadMedia(){
     for (int i = 0; i < RUNNING_ANIMATION_FRAMES; i++) {
         gRunningSpriteTextures[i].loadFromFile("media/sprites/batman-running-" + std::to_string(i+2) + ".png");
     }
+    
+    // load background
+    gBackGroundTexture.loadFromFile("media/gotham.jpg");
 }
 
 void close(){
     for (int i = 0; i < RUNNING_ANIMATION_FRAMES; i++) {
         gRunningSpriteTextures[i].free();
     }
+    gBackGroundTexture.free();
     
     SDL_DestroyRenderer(gRenderer);
     SDL_DestroyWindow(gWindow);
@@ -147,7 +153,10 @@ int main(int argc, const char * argv[]) {
         SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
         SDL_RenderClear(gRenderer);
         
-        gRunningSpriteTextures[frame / FRAME_CONTROLLER].render(50, 50); // TODO
+        // load background first
+        gBackGroundTexture.render(0, 0);
+        
+        gRunningSpriteTextures[frame / FRAME_CONTROLLER].render(50, SCREEN_HEIGHT - 60); // TODO
         
         SDL_RenderPresent(gRenderer);
         
