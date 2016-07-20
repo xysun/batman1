@@ -11,6 +11,8 @@
 		9D0EC5101D3E4B4700079C46 /* LTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D0EC50E1D3E4B4700079C46 /* LTexture.cpp */; };
 		9DC82B121D3B6A510062FFCF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC82B111D3B6A510062FFCF /* main.cpp */; };
 		9DC82B191D3B6A650062FFCF /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC82B181D3B6A650062FFCF /* SDL2.framework */; };
+		9DD53A181D3FD8AB00D2B91E /* Moveable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD53A161D3FD8AB00D2B91E /* Moveable.cpp */; };
+		9DD53A1B1D3FDD1E00D2B91E /* Batman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD53A191D3FDD1E00D2B91E /* Batman.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +34,10 @@
 		9DC82B0E1D3B6A510062FFCF /* batman1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = batman1; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DC82B111D3B6A510062FFCF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9DC82B181D3B6A650062FFCF /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		9DD53A161D3FD8AB00D2B91E /* Moveable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Moveable.cpp; sourceTree = "<group>"; };
+		9DD53A171D3FD8AB00D2B91E /* Moveable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Moveable.hpp; sourceTree = "<group>"; };
+		9DD53A191D3FDD1E00D2B91E /* Batman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Batman.cpp; sourceTree = "<group>"; };
+		9DD53A1A1D3FDD1E00D2B91E /* Batman.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Batman.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,10 @@
 				9DC82B111D3B6A510062FFCF /* main.cpp */,
 				9D0EC50E1D3E4B4700079C46 /* LTexture.cpp */,
 				9D0EC50F1D3E4B4700079C46 /* LTexture.hpp */,
+				9DD53A161D3FD8AB00D2B91E /* Moveable.cpp */,
+				9DD53A171D3FD8AB00D2B91E /* Moveable.hpp */,
+				9DD53A191D3FDD1E00D2B91E /* Batman.cpp */,
+				9DD53A1A1D3FDD1E00D2B91E /* Batman.hpp */,
 			);
 			path = batman1;
 			sourceTree = "<group>";
@@ -133,6 +143,8 @@
 			files = (
 				9D0EC5101D3E4B4700079C46 /* LTexture.cpp in Sources */,
 				9DC82B121D3B6A510062FFCF /* main.cpp in Sources */,
+				9DD53A1B1D3FDD1E00D2B91E /* Batman.cpp in Sources */,
+				9DD53A181D3FD8AB00D2B91E /* Moveable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

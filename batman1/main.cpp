@@ -9,7 +9,7 @@
 #include <iostream>
 #include <string>
 #include <stdio.h>
-#include "LTexture.hpp"
+#include "Batman.hpp"
 
 void init();
 void loadMedia();
@@ -17,16 +17,13 @@ void close();
 
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 480;
-const int FRAME_CONTROLLER = 8;
 
 SDL_Renderer* gRenderer = NULL;
 SDL_Window* gWindow = NULL;
 
-const int RUNNING_ANIMATION_FRAMES = 7;
-LTexture gRunningSpriteTextures[RUNNING_ANIMATION_FRAMES];
-
 LTexture gBackGroundTexture;
 
+Batman* batman = NULL;
 
 void init(){
     SDL_Init(SDL_INIT_VIDEO);
@@ -36,6 +33,8 @@ void init(){
     
     gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     
+    batman = new Batman(gRenderer);
+    
     SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
     
     IMG_Init(IMG_INIT_PNG);
@@ -43,19 +42,16 @@ void init(){
 }
 
 void loadMedia(){
-    // only loading sprite 2 to 8
-    for (int i = 0; i < RUNNING_ANIMATION_FRAMES; i++) {
-        gRunningSpriteTextures[i].loadFromFile("media/sprites/batman-running-" + std::to_string(i+2) + ".png", gRenderer);
-    }
+    
+    batman->loadMedia();
     
     // load background
     gBackGroundTexture.loadFromFile("media/gotham.jpg", gRenderer);
 }
 
 void close(){
-    for (int i = 0; i < RUNNING_ANIMATION_FRAMES; i++) {
-        gRunningSpriteTextures[i].free();
-    }
+    batman->close();
+    
     gBackGroundTexture.free();
     
     SDL_DestroyRenderer(gRenderer);
@@ -97,15 +93,9 @@ int main(int argc, const char * argv[]) {
         gBackGroundTexture.render(scrollingOffset, 0, gRenderer);
         gBackGroundTexture.render(scrollingOffset + gBackGroundTexture.getWidth(), 0, gRenderer);
         
-        gRunningSpriteTextures[frame / FRAME_CONTROLLER].render(50, SCREEN_HEIGHT - 60, gRenderer); // TODO
+        batman->render(50, SCREEN_HEIGHT - 60);
         
         SDL_RenderPresent(gRenderer);
-        
-        ++frame;
-        
-        if (frame / FRAME_CONTROLLER >= RUNNING_ANIMATION_FRAMES) {
-            frame = 0;
-        }
     }
     
     
