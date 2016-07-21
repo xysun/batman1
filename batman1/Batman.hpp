@@ -34,10 +34,11 @@ public:
     void render(int x, int y);
     
     Batman(SDL_Renderer* renderer);
-    Batman();
     
     void loadMedia();
     void close();
+    
+    bool isMovingFwd();
     
     
 private:

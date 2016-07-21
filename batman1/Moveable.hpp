@@ -27,6 +27,8 @@ public:
     
     virtual void close() = 0;
     
+    virtual bool isMovingFwd() = 0;
+    
 private:
     int mPosX, mPosY;
     

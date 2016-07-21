@@ -14,11 +14,6 @@ Batman::Batman(SDL_Renderer* inRenderer){
     state = standing;
 }
 
-Batman::Batman(){
-    renderer = NULL;
-    state = standing;
-}
-
 void Batman::loadMedia(){
     // running, only loading sprite 2 to 8
     for (int i = 0; i < RUNNING_ANIMATION_FRAMES; i++) {
@@ -63,4 +58,24 @@ void Batman::render(int x, int y){
             renderRunning(x, y);
             break;
     }
+}
+
+bool Batman::isMovingFwd(){
+    
+    bool res = false;
+    
+    switch (state) {
+        case running:
+            res = true;
+            break;
+            
+        case standing:
+            res = false;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return res;
 }

@@ -86,10 +86,13 @@ int main(int argc, const char * argv[]) {
         SDL_RenderClear(gRenderer);
         
         // load background first with offset
-        -- scrollingOffset;
-        if (scrollingOffset < -gBackGroundTexture.getWidth()) {
-            scrollingOffset = 0;
+        if (batman->isMovingFwd()) {
+            -- scrollingOffset;
+            if (scrollingOffset < -gBackGroundTexture.getWidth()) {
+                scrollingOffset = 0;
+            }
         }
+        
         gBackGroundTexture.render(scrollingOffset, 0, gRenderer);
         gBackGroundTexture.render(scrollingOffset + gBackGroundTexture.getWidth(), 0, gRenderer);
         
