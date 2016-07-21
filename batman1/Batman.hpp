@@ -39,17 +39,19 @@ public:
     void loadMedia();
     void close();
     
-    void renderRunning(int x, int y);
-    
     
 private:
     
     LTexture runningSprites[RUNNING_ANIMATION_FRAMES];
+    LTexture standingSprite;
     
     SDL_Renderer* renderer;
     
     int currFrameRunning = 0;
     
     BatmanStates state;
+    
+    void renderRunning(int x, int y);
+    void renderStanding(int x, int y);
     
 };

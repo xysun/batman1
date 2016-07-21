@@ -30,7 +30,7 @@ void LTexture::free(){
 
 void LTexture::loadFromFile(std::string path, SDL_Renderer* renderer){
     
-    printf("loading image from: %s\n", path.c_str());
+    //printf("loading image from: %s\n", path.c_str());
     
     free();
     
