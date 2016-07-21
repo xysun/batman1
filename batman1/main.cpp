@@ -80,6 +80,7 @@ int main(int argc, const char * argv[]) {
             if (e.type == SDL_QUIT) {
                 quit = true;
             }
+            batman->handleEvent(e);
         }
         
         SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);

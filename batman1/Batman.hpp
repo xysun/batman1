@@ -27,9 +27,7 @@ public:
     const static int RUNNING_ANIMATION_FRAMES = 7;
     const int FRAME_CONTROLLER = 8;
     
-    void handleEvent(SDL_Event& e){
-        // TODO
-    }
+    void handleEvent(SDL_Event& e);
     
     void render(int x, int y);
     

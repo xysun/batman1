@@ -79,3 +79,31 @@ bool Batman::isMovingFwd(){
     
     return res;
 }
+
+void Batman::handleEvent(SDL_Event& e){
+    /*
+     when press right: turn standing to running
+     when release right: turn running to standing
+     */
+    if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
+        switch (e.key.keysym.sym) {
+            case SDLK_RIGHT:
+                state = running;
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    else if (e.type == SDL_KEYUP && e.key.repeat == 0){
+        switch (e.key.keysym.sym) {
+            case SDLK_RIGHT:
+                state = standing;
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
