@@ -10,6 +10,7 @@
 #include <string>
 #include <stdio.h>
 #include "Batman.hpp"
+#include "GameState.h"
 
 void init();
 void loadMedia();
@@ -24,6 +25,8 @@ SDL_Window* gWindow = NULL;
 LTexture gBackGroundTexture;
 
 Batman* batman = NULL;
+
+GameState gameState;
 
 void init(){
     SDL_Init(SDL_INIT_VIDEO);
@@ -101,6 +104,13 @@ int main(int argc, const char * argv[]) {
         
         SDL_RenderPresent(gRenderer);
     }
+    
+    // save game state
+    gameState.scrollingOffset = scrollingOffset;
+    printf("saving game state: scrolling offset %d\n", gameState.scrollingOffset);
+    
+    // close
+    close();
     
     
     return 0;
