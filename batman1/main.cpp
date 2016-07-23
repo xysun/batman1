@@ -50,9 +50,37 @@ void loadMedia(){
     
     // load background
     gBackGroundTexture.loadFromFile("media/gotham.jpg", gRenderer);
+    
+    // load game file
+    SDL_RWops* file = SDL_RWFromFile("gamestates/01.bin", "r+b");
+    if (file == NULL) {
+        printf("game state file not exist!\n");
+        file = SDL_RWFromFile("gamestates/01.bin", "w+b");
+        printf("new game state file created!\n");
+        gameState.scrollingOffset = 0;
+        SDL_RWwrite(file, &gameState, sizeof(gameState), 1);
+        SDL_RWclose(file);
+    }
+    else{
+        printf("previous game state found, reading file..\n");
+        SDL_RWread(file, &gameState, sizeof(gameState), 1);
+        SDL_RWclose(file);
+    }
 }
 
 void close(){
+    
+    // save game state
+    SDL_RWops* file = SDL_RWFromFile("gamestates/01.bin", "w+b");
+    if (file != NULL) {
+        SDL_RWwrite(file, &gameState, sizeof(gameState), 1);
+        printf("game state saved! \n");
+        SDL_RWclose(file);
+    }
+    else{
+        printf("fail to save game state! \n");
+    }
+    
     batman->close();
     
     gBackGroundTexture.free();
@@ -76,7 +104,7 @@ int main(int argc, const char * argv[]) {
     
     int frame = 0;
     
-    int scrollingOffset = 0;
+    int scrollingOffset = gameState.scrollingOffset;
     
     while (!quit) {
         while (SDL_PollEvent(&e) != 0) {
